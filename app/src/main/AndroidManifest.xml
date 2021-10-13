@@ -23,7 +23,7 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
         <activity
-            android:name=".MainActivity"
+            android:name=".stories.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +40,10 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".stories.ui.ImageActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".stories.ui.VideoActivity"/>
+        <activity android:name=".stories.ui.TextActivity"/>
     </application>
 
 </manifest>

@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CoustomNotification/app/src/main/res/drawable-v24/green_lightgrey_drawable.xml" value="0.14444444444444443" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/activity_image.xml" value="0.10740740740740741" />
         <entry key="..\:/CoustomNotification/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/activity_main_story.xml" value="0.10740740740740741" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/activity_text.xml" value="0.1" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/activity_video.xml" value="0.1" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/custom_view.xml" value="0.10740740740740741" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/progress_story_view.xml" value="0.10740740740740741" />
+        <entry key="..\:/CoustomNotification/app/src/main/res/layout/viedo_layout.xml" value="0.1" />
       </map>
     </option>
   </component>
