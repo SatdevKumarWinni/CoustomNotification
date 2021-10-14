@@ -68,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="25dp"
-            android:text="More Details"
+            android:text="swipe up"
             android:textColor="#ffffff"
             android:background="#080220"
             android:textSize="22sp"
