@@ -10,12 +10,13 @@ import android.widget.VideoView
 import kotlinx.android.synthetic.main.progress_story_view.view.*
 import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import java.lang.Exception
 
 
-class Momentz : ConstraintLayout {
+class Momentz : ConstraintLayout ,View.OnTouchListener{
     private var currentlyShownIndex = 0
     private lateinit var currentView: View
     private var momentzViewList: List<MomentzView>
@@ -239,12 +240,72 @@ class Momentz : ConstraintLayout {
         }
     }
 
-    private inner class SingleTapConfirm : SimpleOnGestureListener() {
 
+    private inner class SingleTapConfirm : SimpleOnGestureListener() {
+        private val SWIPE_THRESHOLD = 100
+        private val SWIPE_VELOCITY_THRESHOLD = 100
+
+        override fun onDown(e: MotionEvent?): Boolean {
+            return true
+        }
         override fun onSingleTapUp(event: MotionEvent): Boolean {
             return true
         }
+
+        override fun onFling(
+            e1: MotionEvent?,
+            e2: MotionEvent?,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
+            var result = false
+            val diffY = e2!!.y - e1!!.y
+            val diffX = e2.x - e1.x
+            try {
+
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                        if (diffX > 0) {
+                            onSwipeRight();
+                        } else {
+                            onSwipeLeft();
+                        }
+                        result = true;
+                    }
+                }
+                else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffY > 0) {
+                        onSwipeBottom();
+                    } else {
+                        onSwipeTop();
+                    }
+                    result = true;
+                }}catch ( exception:Exception) {
+                exception.printStackTrace();
+            }
+            return result;
+        }
+
+
+        fun onSwipeRight() {
+//            Toast.makeText(context,"swipe right ", Toast.LENGTH_SHORT).show()
+        }
+
+        fun onSwipeLeft() {
+//            Toast.makeText(context,"swipe left ",Toast.LENGTH_SHORT).show()
+        }
+
+        fun onSwipeTop() {
+            momentzCallback.onMoreDetails(currentlyShownIndex)
+
+        }
+
+        fun onSwipeBottom() {
+//            Toast.makeText(context,"swipe bottom ",Toast.LENGTH_SHORT).show()
+        }
     }
-
-
+    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        return gestureDetector.onTouchEvent(event);
+    }
 }
